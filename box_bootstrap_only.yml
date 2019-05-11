@@ -1,5 +1,5 @@
 ---
-- hosts: currenthost
+- hosts: base_box
   gather_facts: False
 
   vars:
@@ -36,8 +36,14 @@
     - name: gather facts
       setup:
 
+    - name: Check for common pretasks
+      local_action: stat path="{{shared_dir}}/common_pretasks.yml"
+      register: common_pretasks_exists
+      tags: always
+
     - name: Include common pretasks
       include_tasks: "{{shared_dir}}/common_pretasks.yml"
+      when: common_pretasks_exists.stat.exists == true
       tags: always
 
   roles:
