@@ -1,6 +1,18 @@
 base-box
 ========
 
+Referencing as dependency using gilt (https://github.com/metacloud/gilt/,  `pip install python-gilt`)
+
+```
+# https://gilt.readthedocs.io/en/latest/
+  - git: https://github.com/oops-to-devops/base-box.git
+    version: master
+    dst: deployment/provisioners/base-box/
+    post_commands:
+      - make
+```
+
+
 
 Using with vagrant boilerplate (https://github.com/Voronenko/devops-vagrant-ansible-boilerplate)
 
