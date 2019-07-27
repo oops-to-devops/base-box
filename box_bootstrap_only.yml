@@ -7,9 +7,10 @@
     - shared_dir: "{{ playbook_dir }}/../shared"
 
     - box_deploy_authorized_keys:
-        - "{{shared_dir}}/files/ssh_keys/svoronenko.pub"
+        - "{{shared_dir}}/files/keys/id_rsa.pub"
 
     - box_deploy_pass: "" # override externally
+    - box_option_security_updates: true
 
   pre_tasks:
     - debug: msg="Pre tasks section for {{ansible_host}}"
@@ -49,7 +50,8 @@
   roles:
 # Uncomment if host is not yet configured for automatic updates
     - {
-         role: "sa-secure-automatic-updates"
+         role: "sa-secure-automatic-updates",
+         when: box_option_security_updates
       }
     - {
         role: "sa-box-bootstrap",
