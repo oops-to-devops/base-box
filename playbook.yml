@@ -65,10 +65,10 @@
   roles:
 # Uncomment if host is not yet configured for automatic updates
     - {
-         role: "sa-secure-automatic-updates"
+         role: "sa_secure_automatic_updates"
       }
     - {
-        role: "sa-box-bootstrap",
+        role: "sa_box_bootstrap",
         deploy_user: "{{box_deploy_user}}",
         deploy_user_authorized_keys: "{{box_deploy_authorized_keys | default(omit)}}",
         deploy_user_sudo_password: "{{box_deploy_pass | password_hash('sha512')}}",
