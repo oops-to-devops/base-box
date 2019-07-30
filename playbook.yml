@@ -9,6 +9,8 @@
     - box_deploy_authorized_keys:
         - "{{shared_dir}}/files/ssh_keys/svoronenko.pub"
 
+    - box_whitelisted_hosts: []
+
     - box_deploy_pass: "" # override externally
 
     - box_ufw_rules_allow:
@@ -26,6 +28,11 @@
         }
     - box_ufw_rules_allow_from_hosts: []
     - box_timezone: Europe/Kiev
+
+    - box_option_security_updates: true
+    - box_option_copy_initial_authorized_keys: true
+    - box_option_file2ban: false
+    - box_option_monit: false
 
   pre_tasks:
     - debug: msg="Pre tasks section for {{ansible_host}}"
@@ -77,12 +84,12 @@
         ufw_rules_allow_from_hosts: "{{ box_ufw_rules_allow_from_hosts }}",
         hostname: "{{targethost | default(ansible_hostname)}}",
         timezone: "{{ box_timezone }}",
-
-        option_copy_initial_authorized_keys: true,
+        whitelistedips: "{{ box_whitelisted_hosts }}",
+        option_copy_initial_authorized_keys: "{{ box_option_copy_initial_authorized_keys }}",
         option_enforce_ssh_keys_login: "{{provider_option_enforce_ssh_keys_login | default(true)}}",
-        option_file2ban: false,
-        option_ufw: "{{provider_option_ufw | default(false)}}",
-        option_monit: false
+        option_file2ban: "{{ box_option_file2ban }}",
+        option_firewall: "{{provider_option_ufw | default(false)}}",
+        option_monit: "{{ box_option_monit }}"
       }
 
   tasks:
