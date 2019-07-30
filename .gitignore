@@ -11,3 +11,4 @@ roles
 */**/.terraform
 runtime_inventory
 local_*.sh
+releases
