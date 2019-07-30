@@ -19,7 +19,7 @@ Using with vagrant boilerplate (https://github.com/Voronenko/devops-vagrant-ansi
 
 ```
 
-      config.vm.provision "base-box", type: "ansible" do |ansible|
+      config.vm.provision "ansible" do |ansible|
           ansible.playbook = "provisioners/base-box/box_bootstrap_only.yml"
           ansible.galaxy_role_file = "provisioners/base-box/requirements.yml"
           ansible.galaxy_roles_path = "deployment/provisioners/base-box/roles"
