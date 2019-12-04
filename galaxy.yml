@@ -10,7 +10,7 @@ license:
     - "MIT"
 tags:
     - softasap
-repository: "https://github.com/oops-to-devops/base-box"
-documentation: "https://github.com/oops-to-devops/base-box/blob/master/README.md"
+repository: "https://github.com/oops-to-devops/base_box"
+documentation: "https://github.com/oops-to-devops/base_box/blob/master/README.md"
 homepage: "https://www.softasap.com"
 issues: "https://github.com/orgs/oops-to-devops/projects/1"

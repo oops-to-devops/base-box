@@ -1,13 +1,13 @@
-base-box
+base_box
 ========
 
 Referencing as dependency using gilt (https://github.com/metacloud/gilt/,  `pip install python-gilt`)
 
 ```
 # https://gilt.readthedocs.io/en/latest/
-  - git: https://github.com/oops-to-devops/base-box.git
+  - git: https://github.com/oops-to-devops/base_box.git
     version: master
-    dst: deployment/provisioners/base-box/
+    dst: deployment/provisioners/base_box/
     post_commands:
       - make
 ```
@@ -20,9 +20,9 @@ Using with vagrant boilerplate (https://github.com/Voronenko/devops-vagrant-ansi
 ```
 
       config.vm.provision "ansible" do |ansible|
-          ansible.playbook = "provisioners/base-box/box_bootstrap_only.yml"
-          ansible.galaxy_role_file = "provisioners/base-box/requirements.yml"
-          ansible.galaxy_roles_path = "deployment/provisioners/base-box/roles"
+          ansible.playbook = "provisioners/base_box/box_bootstrap_only.yml"
+          ansible.galaxy_role_file = "provisioners/base_box/requirements.yml"
+          ansible.galaxy_roles_path = "deployment/provisioners/base_box/roles"
           ansible.verbose = true
           ansible.groups = {
               "base_box" => [vconfig['vagrant_machine_name']]
@@ -49,7 +49,7 @@ resource "null_resource" "baseboxed_servers" {
 
 
   provisioner "local-exec" {
-    command = "$INFRASTRUCTURE_ROOT_DIR/provisioners/base-box/provision_box.sh"
+    command = "$INFRASTRUCTURE_ROOT_DIR/provisioners/base_box/provision_box.sh"
 
     environment {
       REMOTE_HOST = "${digitalocean_droplet.web.ipv4_address}"
