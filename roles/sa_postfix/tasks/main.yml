@@ -1,4 +1,0 @@
----
-# tasks file for sa-postfix
-
-  - include: tasks_postfix.yml
